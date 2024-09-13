@@ -1,6 +1,6 @@
 # Sir Vote-a-lot
 
-### Frontend Code Assessment
+### Frontend Code Assessment:
 
 The application is a single page application which is divided in three sections. On the first section, the user can
 create a poll with up to 10 options. In the central one, the user can vote by selecting one of the options and
@@ -21,6 +21,12 @@ npm install
 
 ```js
 npm run dev
+```
+
+### Deployment url:
+
+```js
+https://sir-vote-a-lot-a66ca.web.app/
 ```
 
 ### Use Cases:
