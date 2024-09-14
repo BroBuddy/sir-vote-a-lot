@@ -30,9 +30,7 @@ const RadioGroupItem = React.forwardRef<
             )}
             {...props}
         >
-            <RadioGroupPrimitive.Indicator className="absolute left-3 bottom-1 text-gray-100 text-xl">
-                ✔
-            </RadioGroupPrimitive.Indicator>
+            <RadioGroupPrimitive.Indicator className="left-3 bottom-1 text-gray-100 text-xl" />
         </RadioGroupPrimitive.Item>
     )
 })
