@@ -7,13 +7,26 @@ create a poll with up to 10 options. In the central one, the user can vote by se
 pressing the "vote" button. On the right, the chart will update based on the questions created and the votes that
 each question got.
 
-### Tech Stack:
+### Use Cases:
+
+-   As the owner, I want to change my poll question.
+-   As the owner, I want to add, edit or remove the options of my poll.
+-   As the owner, I want to reset the whole form, including answers.
+-   As the user, I want to see the UI refresh automatically when something changes.
+-   As the respondent, I want to send several answers.
+-   As the respondent, I want to see the changes in real time.
+
+### Dependencies:
 
 -   Vite
 -   React
 -   TypeScript
+-   Firebase
+-   Tailwind
+-   Zod
+-   Zustand
 
-### How to run the app:
+### Commands to run the app:
 
 ```js
 npm install
@@ -23,17 +36,12 @@ npm install
 npm run dev
 ```
 
+```js
+npm run lint
+```
+
 ### Deployment url:
 
 ```js
 https://sir-vote-a-lot-a66ca.web.app/
 ```
-
-### Use Cases:
-
--   As the owner, I want to change my poll question.
--   As the owner, I want to add, edit or remove the options of my poll.
--   As the owner, I want to reset the whole form, including answers.
--   As the user, I want to see the UI refresh automatically when something changes.
--   As the respondent, I want to send several answers.
--   As the respondent, I want to see the changes in real time.

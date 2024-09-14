@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Form, FormField, FormItem } from './ui/form'
-import { Button } from './ui/button'
+import Button from './ui/button'
 import VoteGroup from './VoteGroup'
 
 const pollVoteSchema = z.object({

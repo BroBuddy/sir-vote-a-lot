@@ -7,6 +7,7 @@ import {
     Title,
     Tooltip,
     Legend,
+    Chart,
 } from 'chart.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
@@ -21,6 +22,17 @@ type DataSet = {
     borderWidth: number
     data: number[]
     label: string[]
+}
+
+type TooltipData = {
+    chart: Chart
+    label: string
+    dataIndex: number
+    datasetIndex: number
+    raw: number
+    formattedValue: string
+    parsed: { x: number; y: number }
+    element: BarElement
 }
 
 const BarChart = (items: { options: Option[] }) => {
@@ -61,7 +73,7 @@ const BarChart = (items: { options: Option[] }) => {
             },
             tooltip: {
                 callbacks: {
-                    label: (data: any) => {
+                    label: (data: TooltipData) => {
                         return 'Votes:' + data.formattedValue
                     },
                 },
@@ -81,7 +93,7 @@ const BarChart = (items: { options: Option[] }) => {
         },
     }
 
-    return <Bar data={chartData as ChartData | any} options={chartConfig} />
+    return <Bar data={chartData as ChartData} options={chartConfig} />
 }
 
 export default BarChart

@@ -10,8 +10,8 @@ import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import usePollStore from '@/store/pollStore'
-import { Button } from '@/components/ui/button'
 import { useEffect } from 'react'
+import Button from './ui/button'
 
 const pollFormSchema = z.object({
     question: z.string(),
@@ -106,7 +106,7 @@ const PollForm = () => {
 
     useEffect(() => {
         reset({ question, options })
-    }, [options])
+    }, [options, question, reset])
 
     return (
         <Form {...pollForm}>
