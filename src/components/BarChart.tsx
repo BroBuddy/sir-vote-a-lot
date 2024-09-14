@@ -8,21 +8,11 @@ import {
     Tooltip,
     Legend,
     Chart,
+    ChartData,
+    ChartOptions,
 } from 'chart.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
-
-type ChartData = {
-    datasets: DataSet[]
-    labels: string[]
-}
-
-type DataSet = {
-    backgroundColor: string[]
-    borderWidth: number
-    data: number[]
-    label: string[]
-}
 
 type TooltipData = {
     chart: Chart
@@ -54,7 +44,8 @@ const BarChart = (items: { options: Option[] }) => {
     const showLegend: boolean = false
     const axisColor: string = '#fff'
 
-    const chartData: ChartData = {
+    /* eslint-disable-next-line */
+    const chartData: ChartData | any = {
         labels: options.map((option: Option) => option.text),
         datasets: [
             {
@@ -66,7 +57,8 @@ const BarChart = (items: { options: Option[] }) => {
         ],
     }
 
-    const chartConfig = {
+    /* eslint-disable-next-line */
+    const chartConfig: ChartOptions | any = {
         plugins: {
             legend: {
                 display: showLegend,
@@ -93,7 +85,13 @@ const BarChart = (items: { options: Option[] }) => {
         },
     }
 
-    return <Bar data={chartData as ChartData} options={chartConfig} />
+    return (
+        /* eslint-disable */
+        <Bar
+            data={chartData as ChartData | any}
+            options={chartConfig as ChartOptions | any}
+        />
+    )
 }
 
 export default BarChart
