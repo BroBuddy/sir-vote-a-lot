@@ -23,7 +23,8 @@ const PollChart = () => {
             </div>
 
             <div className="flex ml-5 mb-5 text-white text-sm justify-start">
-                Total votes: {totalVotes}
+                Total votes:&nbsp;
+                <span data-testid="total-votes">{totalVotes}</span>
             </div>
         </div>
     )

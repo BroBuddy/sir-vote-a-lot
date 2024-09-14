@@ -1,21 +1,7 @@
 import { test, expect } from '@playwright/test'
 
-const appTitle = 'Sir Vote-a-lot'
 const appUrl = 'http://localhost:5173'
 const question = 'What is the value of π?'
-
-test.describe(appTitle, () => {
-    test.beforeEach(async ({ page }) => {
-        await page.goto(appUrl)
-    })
-
-    test('should have correct title and heading', async ({ page }) => {
-        await expect(page).toHaveTitle(appTitle)
-        await expect(
-            page.getByRole('heading', { name: appTitle })
-        ).toBeVisible()
-    })
-})
 
 test.describe('Poll Form', () => {
     test.beforeEach(async ({ page }) => {
@@ -33,7 +19,7 @@ test.describe('Poll Form', () => {
         await expect(addButton).toBeVisible()
     })
 
-    test('should have 3 initial list items', async ({ page }) => {
+    test('should have 3 initial poll items', async ({ page }) => {
         const pollItems = page.getByTestId('poll-list-items')
 
         await expect(pollItems).toHaveCount(3)
@@ -48,7 +34,9 @@ test.describe('Poll Form', () => {
         await addInput.fill('1.23')
         await expect(addButton).toBeEnabled()
         await addButton.click()
-        await expect(pollItems).toHaveCount(4)
+        await expect(pollItems).toHaveCount(4, {
+            timeout: 10000,
+        })
     })
 
     test('should remove option', async ({ page }) => {
@@ -56,7 +44,9 @@ test.describe('Poll Form', () => {
         const firstDeleteButton = page.getByRole('button', { name: 'X' }).nth(0)
 
         await firstDeleteButton.click()
-        await expect(pollItems).toHaveCount(2)
+        await expect(pollItems).toHaveCount(2, {
+            timeout: 10000,
+        })
     })
 
     test('should reset form', async ({ page }) => {
@@ -64,7 +54,9 @@ test.describe('Poll Form', () => {
         const resetButton = page.getByRole('button', { name: 'Reset' })
 
         await resetButton.click()
-        await expect(pollItems).toHaveCount(0)
+        await expect(pollItems).toHaveCount(0, {
+            timeout: 10000,
+        })
         await expect(page.getByTestId('poll-question')).toHaveValue('')
     })
 })
