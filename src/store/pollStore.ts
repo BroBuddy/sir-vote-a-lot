@@ -36,7 +36,6 @@ const usePollStore = create<State & Actions>((set, get) => ({
         }))
     },
     addOption: (optionText: string) => {
-        console.log('addOption')
         const options = get().options as Option[]
 
         const newOption = {
