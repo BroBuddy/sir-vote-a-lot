@@ -22,6 +22,7 @@ each question got.
 -   React
 -   TypeScript
 -   Firebase
+-   Playwrigth
 -   Tailwind
 -   Zod
 -   Zustand
@@ -36,8 +37,14 @@ npm install
 npm run dev
 ```
 
+### Commands for code quality:
+
 ```js
 npm run lint
+```
+
+```js
+npx playwrigth test --ui
 ```
 
 ### Deployment url:

@@ -124,6 +124,7 @@ const PollForm = () => {
                                 <FormControl>
                                     <Input
                                         {...field}
+                                        data-testid="poll-question"
                                         onKeyUp={handleSubmit(onSubmit)}
                                         maxLength={maxLength}
                                     />
@@ -140,6 +141,7 @@ const PollForm = () => {
                             return (
                                 <div
                                     className="flex flex-row gap-2"
+                                    data-testid="poll-list-items"
                                     key={index}
                                 >
                                     <FormItem>
@@ -174,6 +176,7 @@ const PollForm = () => {
                             <FormItem>
                                 <Input
                                     {...register('newOption')}
+                                    data-testid="poll-add-input"
                                     placeholder="Type an answer..."
                                     className="border p-2"
                                 />
