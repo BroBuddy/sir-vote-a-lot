@@ -9,7 +9,7 @@ type Actions = {
     setQuestion: (question: string) => void
     setOptions: (options: Option[]) => void
     addOption: (optionText: string) => void
-    removeOption: (optionID: string) => void
+    removeOption: (optionText: string) => void
     voteOption: (optionID: string) => void
     resetPoll: () => void
 }
@@ -48,16 +48,16 @@ const usePollStore = create<State & Actions>((set, get) => ({
             options: [...options, newOption],
         }))
     },
-    removeOption: (optionId: string) => {
-        const options = get().options as Option[]
-        const optionIndex = options.findIndex(
-            (option) => option.id === optionId
+    removeOption: (optionText: string) => {
+        const newOptions = get().options as Option[]
+        const optionIndex = newOptions.findIndex(
+            (option) => option.text === optionText
         )
 
-        options.splice(optionIndex, 1)
+        newOptions.splice(optionIndex, 1)
 
         set(() => ({
-            options,
+            options: [...newOptions],
         }))
     },
     voteOption: (optionId: string) => {

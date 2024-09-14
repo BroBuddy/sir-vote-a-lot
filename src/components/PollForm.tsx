@@ -99,8 +99,8 @@ const PollForm = () => {
         reset({ newOption: '' })
     }
 
-    const onRemoveOption = (optionId: string, optionIndex: number) => {
-        removeOption(optionId)
+    const onRemoveOption = (option: Option, optionIndex: number) => {
+        removeOption(option.text)
         remove(optionIndex)
     }
 
@@ -160,7 +160,7 @@ const PollForm = () => {
                                         disabled={isOptionRemoveable}
                                         className="bg-transparent rounded-md p-4"
                                         onClick={() =>
-                                            onRemoveOption(option.id, index)
+                                            onRemoveOption(option, index)
                                         }
                                     >
                                         X
