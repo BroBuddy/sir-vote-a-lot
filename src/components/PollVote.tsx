@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { Form, FormField, FormItem } from './ui/form'
 import Button from './ui/button'
 import VoteGroup from './VoteGroup'
+import { EMPTY_VOTE_MESSAGE } from '@/constants'
 
 const pollVoteSchema = z.object({
     option: z.string(),
@@ -21,13 +22,15 @@ const PollVote = () => {
         resolver: zodResolver(pollVoteSchema),
     })
 
-    const onSubmit = (values: z.infer<typeof pollVoteSchema>) => {
-        voteOption(values.option)
-    }
-
     const isValidVote = pollVote.formState.isValid
-    const emptyVoteMessage: string =
-        'Please submit a new question with minimal two options available.'
+
+    const onSubmit = (values: z.infer<typeof pollVoteSchema>) => {
+        try {
+            voteOption(values.option)
+        } catch (error) {
+            if (error instanceof Error) console.log('Error', error)
+        }
+    }
 
     return (
         <>
@@ -37,7 +40,7 @@ const PollVote = () => {
                     onSubmit={pollVote.handleSubmit(onSubmit)}
                 >
                     <div className="mt-9 mx-10 font-bold text-white">
-                        {question || emptyVoteMessage}
+                        {question || EMPTY_VOTE_MESSAGE}
                     </div>
 
                     {options.length >= 1 && (

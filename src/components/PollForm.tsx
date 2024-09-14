@@ -12,6 +12,11 @@ import { z } from 'zod'
 import usePollStore from '@/store/pollStore'
 import { useEffect } from 'react'
 import Button from './ui/button'
+import {
+    POLL_MAX_OPTIONS,
+    POLL_MIN_OPTIONS,
+    POLL_MAX_LENGTH,
+} from '@/constants'
 
 const pollFormSchema = z.object({
     question: z.string(),
@@ -75,12 +80,8 @@ const PollForm = () => {
     })
 
     const watchNewOption = watch('newOption')
-
-    const minOptions = 2
-    const maxOptions = 10
-    const maxLength = 80
-    const isOptionAddable = fields.length >= maxOptions || !watchNewOption
-    const isOptionRemoveable = fields.length <= minOptions
+    const isOptionAddable = fields.length >= POLL_MAX_OPTIONS || !watchNewOption
+    const isOptionRemoveable = fields.length <= POLL_MIN_OPTIONS
 
     const onReset = () => {
         reset({ question: '', options: [] })
@@ -95,8 +96,14 @@ const PollForm = () => {
 
     const onAddOption = () => {
         const values = getValues()
-        addOption(values.newOption)
-        reset({ newOption: '' })
+
+        try {
+            addOption(values.newOption)
+        } catch (error) {
+            if (error instanceof Error) console.log('Error', error)
+        } finally {
+            reset({ newOption: '' })
+        }
     }
 
     const onRemoveOption = (option: Option, optionIndex: number) => {
@@ -126,7 +133,7 @@ const PollForm = () => {
                                         {...field}
                                         data-testid="poll-question"
                                         onKeyUp={handleSubmit(onSubmit)}
-                                        maxLength={maxLength}
+                                        maxLength={POLL_MAX_LENGTH}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -153,7 +160,7 @@ const PollForm = () => {
                                             placeholder="Type an answer..."
                                             defaultValue={option.text}
                                             className="border p-2"
-                                            maxLength={maxLength}
+                                            maxLength={POLL_MAX_LENGTH}
                                         />
                                     </FormItem>
 
@@ -171,7 +178,7 @@ const PollForm = () => {
                             )
                         })}
 
-                    {fields.length < maxOptions && (
+                    {fields.length < POLL_MAX_OPTIONS && (
                         <div className="flex flex-row gap-2">
                             <FormItem>
                                 <Input
@@ -198,7 +205,7 @@ const PollForm = () => {
 
                 <div className="flex flex-row gap-5 w-full items-end justify-between">
                     <div className="text-white text-sm">
-                        {fields.length}/{maxOptions} possible answers
+                        {fields.length}/{POLL_MAX_OPTIONS} possible answers
                     </div>
 
                     <div className="flex flex-row gap-4">
