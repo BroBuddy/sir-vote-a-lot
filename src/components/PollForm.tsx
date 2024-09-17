@@ -90,6 +90,7 @@ const PollForm = () => {
     }
 
     const onSubmit = (values: z.infer<typeof pollFormSchema>) => {
+        console.log('values', values)
         setQuestion(values.question)
         setOptions(values.options)
     }
@@ -179,27 +180,25 @@ const PollForm = () => {
                             )
                         })}
 
-                    {fields.length < POLL_MAX_OPTIONS && (
-                        <div className="flex flex-row gap-2">
-                            <FormItem className="w-full">
-                                <Input
-                                    {...register('newOption')}
-                                    data-testid="poll-add-input"
-                                    placeholder="Type an answer..."
-                                    className="border-none bg-white/70"
-                                />
-                            </FormItem>
+                    <div className="flex flex-row gap-2">
+                        <FormItem className="w-full">
+                            <Input
+                                {...register('newOption')}
+                                data-testid="poll-add-input"
+                                placeholder="Type an answer..."
+                                className="border-none bg-white/70"
+                            />
+                        </FormItem>
 
-                            <Button
-                                type="button"
-                                disabled={isOptionAddable}
-                                className="p-2"
-                                onClick={onAddOption}
-                            >
-                                Add
-                            </Button>
-                        </div>
-                    )}
+                        <Button
+                            type="button"
+                            disabled={isOptionAddable}
+                            className="p-2"
+                            onClick={onAddOption}
+                        >
+                            Add
+                        </Button>
+                    </div>
 
                     <div className="flex flex-row gap-5"></div>
                 </div>
