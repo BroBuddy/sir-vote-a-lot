@@ -30,16 +30,16 @@ const VoteGroup = (items: { options: Option[]; field: VoteField }) => {
                                 <FormControl>
                                     <RadioGroupItem
                                         checked={field.value === option.id}
-                                        className={`h-10 border-1 border-gray-900 ${
+                                        className={`h-10 border-1 border-white ${
                                             field.value === option.id
-                                                ? 'bg-gray-900'
+                                                ? 'bg-white/70'
                                                 : 'bg-transparent'
                                         }`}
                                         value={option.id}
                                     />
                                 </FormControl>
 
-                                <FormLabel className="font-normal text-white">
+                                <FormLabel className="font-normal text-white cursor-pointer">
                                     {option.text.length <= POLL_TEXT_LENGTH
                                         ? option.text
                                         : `${option.text.substring(0, POLL_TEXT_LENGTH)}...`}

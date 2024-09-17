@@ -10,15 +10,15 @@ const SirVoteALot = () => {
             </div>
 
             <div className="flex flex-row gap-5 mx-5">
-                <div className="w-1/3 card rounded-xl">
+                <div className="w-1/3 card rounded-md hover:shadow-xl">
                     <PollForm />
                 </div>
 
-                <div className="w-1/3 card rounded-xl">
+                <div className="w-1/3 card rounded-md hover:shadow-xl">
                     <PollVote />
                 </div>
 
-                <div className="w-1/3 card rounded-xl">
+                <div className="w-1/3 card rounded-md hover:shadow-xl">
                     <PollChart />
                 </div>
             </div>

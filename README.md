@@ -21,13 +21,17 @@ each question got.
 -   Vite
 -   React
 -   TypeScript
--   Firebase
--   Playwrigth
+-   Firebase (Hosting)
+-   Playwrigth (e2e)
 -   Tailwind
 -   Zod
--   Zustand
+-   Zustand (State)
 
 ### Commands to run the app:
+
+```js
+git clone https://github.com/BroBuddy/sir-vote-a-lot.git
+```
 
 ```js
 npm install
@@ -44,7 +48,7 @@ npm run lint
 ```
 
 ```js
-npx playwrigth test --ui
+npx playwrigth test
 ```
 
 ### Deployment url:

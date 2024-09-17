@@ -90,7 +90,6 @@ const PollForm = () => {
     }
 
     const onSubmit = (values: z.infer<typeof pollFormSchema>) => {
-        console.log('values', values)
         setQuestion(values.question)
         setOptions(values.options)
     }
