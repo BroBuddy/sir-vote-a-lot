@@ -18,6 +18,7 @@ const CHART_SHOW_LEGEND: boolean = false
 const POLL_MIN_OPTIONS: number = 2
 const POLL_MAX_OPTIONS: number = 10
 const POLL_MAX_LENGTH: number = 40
+const POLL_TEXT_LENGTH: number = 25
 
 const EMPTY_VOTE_MESSAGE: string =
     'Please submit a new question with minimal two options available.'
@@ -31,5 +32,6 @@ export {
     POLL_MIN_OPTIONS,
     POLL_MAX_OPTIONS,
     POLL_MAX_LENGTH,
+    POLL_TEXT_LENGTH,
     EMPTY_VOTE_MESSAGE,
 }

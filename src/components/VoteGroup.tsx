@@ -1,6 +1,7 @@
 import { RadioGroup, RadioGroupItem } from '@radix-ui/react-radio-group'
 import React from 'react'
 import { FormItem, FormControl, FormLabel } from './ui/form'
+import { POLL_TEXT_LENGTH } from '@/constants'
 
 type VoteField = {
     name: string
@@ -39,7 +40,9 @@ const VoteGroup = (items: { options: Option[]; field: VoteField }) => {
                                 </FormControl>
 
                                 <FormLabel className="font-normal text-white">
-                                    {option.text}
+                                    {option.text.length <= POLL_TEXT_LENGTH
+                                        ? option.text
+                                        : `${option.text.substring(0, POLL_TEXT_LENGTH)}...`}
                                 </FormLabel>
                             </FormItem>
                         </React.Fragment>

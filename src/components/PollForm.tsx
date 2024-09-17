@@ -121,19 +121,20 @@ const PollForm = () => {
                 className="flex flex-col gap-5 p-5 items-center h-full"
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <div className="flex">
+                <div className="flex w-full">
                     <FormField
                         control={control}
                         name="question"
                         defaultValue={question}
                         render={({ field }) => (
-                            <FormItem>
+                            <FormItem className="w-full">
                                 <FormControl>
                                     <Input
                                         {...field}
                                         data-testid="poll-question"
                                         onKeyUp={handleSubmit(onSubmit)}
                                         maxLength={POLL_MAX_LENGTH}
+                                        className="flex flex-grow w-full border-none bg-white/70"
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -142,16 +143,16 @@ const PollForm = () => {
                     />
                 </div>
 
-                <div className="flex flex-col flex-grow gap-3">
+                <div className="flex flex-col w-full gap-3">
                     {options &&
                         fields.map((option: Option, index: number) => {
                             return (
                                 <div
-                                    className="flex flex-row gap-2"
+                                    className="flex flex-row justify-between gap-2"
                                     data-testid="poll-list-items"
                                     key={index}
                                 >
-                                    <FormItem>
+                                    <FormItem className="w-full">
                                         <Input
                                             {...register(
                                                 `options.${index}.text` as const
@@ -159,7 +160,7 @@ const PollForm = () => {
                                             onKeyUp={handleSubmit(onSubmit)}
                                             placeholder="Type an answer..."
                                             defaultValue={option.text}
-                                            className="border p-2"
+                                            className="border-none bg-white/70"
                                             maxLength={POLL_MAX_LENGTH}
                                         />
                                     </FormItem>
@@ -167,7 +168,7 @@ const PollForm = () => {
                                     <Button
                                         type="button"
                                         disabled={isOptionRemoveable}
-                                        className="bg-transparent rounded-md p-4"
+                                        className="flex-none bg-transparent rounded-md p-4"
                                         onClick={() =>
                                             onRemoveOption(option, index)
                                         }
@@ -180,12 +181,12 @@ const PollForm = () => {
 
                     {fields.length < POLL_MAX_OPTIONS && (
                         <div className="flex flex-row gap-2">
-                            <FormItem>
+                            <FormItem className="w-full">
                                 <Input
                                     {...register('newOption')}
                                     data-testid="poll-add-input"
                                     placeholder="Type an answer..."
-                                    className="border p-2"
+                                    className="border-none bg-white/70"
                                 />
                             </FormItem>
 
