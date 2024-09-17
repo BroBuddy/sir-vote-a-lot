@@ -11,12 +11,13 @@ const CHART_BG_COLORS: string[] = [
     '#6495ED',
 ]
 const CHART_AXIS_COLOR: string = '#fff'
+const CHART_AXIS_LENGTH: number = 10
 const CHART_BORDER_WIDTH: number = 1
 const CHART_SHOW_LEGEND: boolean = false
 
 const POLL_MIN_OPTIONS: number = 2
 const POLL_MAX_OPTIONS: number = 10
-const POLL_MAX_LENGTH: number = 80
+const POLL_MAX_LENGTH: number = 40
 
 const EMPTY_VOTE_MESSAGE: string =
     'Please submit a new question with minimal two options available.'
@@ -24,6 +25,7 @@ const EMPTY_VOTE_MESSAGE: string =
 export {
     CHART_BG_COLORS,
     CHART_AXIS_COLOR,
+    CHART_AXIS_LENGTH,
     CHART_BORDER_WIDTH,
     CHART_SHOW_LEGEND,
     POLL_MIN_OPTIONS,

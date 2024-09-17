@@ -13,6 +13,7 @@ import {
 } from 'chart.js'
 import {
     CHART_AXIS_COLOR,
+    CHART_AXIS_LENGTH,
     CHART_BG_COLORS,
     CHART_BORDER_WIDTH,
     CHART_SHOW_LEGEND,
@@ -70,6 +71,21 @@ const BarChart = (items: { options: Option[] }) => {
             x: {
                 ticks: {
                     color: CHART_AXIS_COLOR,
+                },
+                beforeUpdate(axis: CategoryScale) {
+                    const labels = axis.chart.data.labels as string[]
+
+                    for (let i = 0; i < labels.length; i++) {
+                        const label = labels[i]
+
+                        if (
+                            typeof label === 'string' &&
+                            label.length > CHART_AXIS_LENGTH
+                        ) {
+                            labels[i] =
+                                `${label.substring(0, CHART_AXIS_LENGTH)}...`
+                        }
+                    }
                 },
             },
         },
