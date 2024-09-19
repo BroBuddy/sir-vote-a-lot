@@ -1,13 +1,11 @@
-import { create } from 'zustand'
+import { create, StoreApi, UseBoundStore } from 'zustand'
 import zustymiddlewarets from 'zustymiddlewarets'
 
-/* eslint-disable */
 declare global {
     interface Window {
-        store: any
+        store: UseBoundStore<StoreApi<State & Actions>>
     }
 }
-/* eslint-enable */
 
 type State = {
     question: string

@@ -32,11 +32,13 @@ type TooltipData = {
     element: BarElement
 }
 
+type DataChart = ChartData | Record<string, string | number | unknown>
+type ConfigChart = ChartOptions | Record<string, string | number | unknown>
+
 const BarChart = (items: { options: Option[] }) => {
     const { options } = items
 
-    /* eslint-disable-next-line */
-    const chartData: ChartData | any = {
+    const chartData: DataChart = {
         labels: options.map((option: Option) => option.text),
         datasets: [
             {
@@ -48,8 +50,7 @@ const BarChart = (items: { options: Option[] }) => {
         ],
     }
 
-    /* eslint-disable-next-line */
-    const chartConfig: ChartOptions | any = {
+    const chartConfig: ConfigChart = {
         plugins: {
             legend: {
                 display: CHART_SHOW_LEGEND,
