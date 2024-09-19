@@ -29,13 +29,13 @@ test.describe('Poll Vote', () => {
         test.slow()
 
         const firstVoteButton = page.getByTestId('vote-list-items').nth(0)
-        const voteButton = page.getByRole('button', { name: 'Vote' })
-        const totalVotes = page.getByTestId('total-votes')
-
         await firstVoteButton.click()
+
+        const voteButton = page.getByRole('button', { name: 'Vote' })
+        await expect(voteButton).toBeEnabled()
         await voteButton.click()
-        await expect(totalVotes).toHaveText('12', {
-            timeout: 10000,
-        })
+
+        const totalVotes = page.getByTestId('total-votes')
+        await expect(totalVotes).toHaveText('12')
     })
 })

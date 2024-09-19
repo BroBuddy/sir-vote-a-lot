@@ -23,12 +23,10 @@ const VoteGroup = (items: { options: Option[]; field: VoteField }) => {
                 {options.map((option: Option, index: number) => {
                     return (
                         <React.Fragment key={index}>
-                            <FormItem
-                                data-testid="vote-list-items"
-                                className="flex relative items-center space-x-3 space-y-0"
-                            >
+                            <FormItem className="flex relative items-center space-x-3 space-y-0">
                                 <FormControl>
                                     <RadioGroupItem
+                                        data-testid="vote-list-items"
                                         checked={field.value === option.id}
                                         className={`h-10 border-1 border-white ${
                                             field.value === option.id
