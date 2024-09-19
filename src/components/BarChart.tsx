@@ -97,6 +97,7 @@ const BarChart = (items: { options: Option[] }) => {
             data={chartData as ChartData | any}
             options={chartConfig as ChartOptions | any}
         />
+        /* eslint-enable */
     )
 }
 
